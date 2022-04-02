@@ -29,7 +29,7 @@
 	let scoreDiv = []
 
 	const unsubscribe = stats.subscribe((value) => {
-		for (const el of value) {
+		for (const el of Object.entries(value)) {
 			const idx = el[0]
 			const num = el[1]
 			if (scoreDiv[idx] === undefined || scoreDiv[idx] === null) {
@@ -65,7 +65,7 @@
 				</div>
 				<div class={style.separator}>‣&nbsp;</div>
 				<div class={style.score} bind:this={scoreDiv[idx]}>
-					{$stats.get(idx)}
+					{$stats[idx]}
 				</div>
 			</button>
 		{/if}
@@ -76,7 +76,7 @@
 				</div>
 				<div class={style.separator}>‣&nbsp;</div>
 				<div class={style.score} bind:this={scoreDiv[idx]}>
-					{$stats.get(idx)}
+					{$stats[idx]}
 				</div>
 			</button>
 		{/if}

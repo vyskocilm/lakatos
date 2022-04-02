@@ -152,4 +152,6 @@ src:`${assets}/zasrane-zamrdane.mp3`,
 	]
 
 export const clips = readable(lakatosAll)
-export const stats = writable(new Map(lakatosAll.map((x, idx) => [idx, 0])))
+
+// stats
+export const stats = writable(Object.fromEntries(lakatosAll.map((x, idx) => [idx, 0])))
