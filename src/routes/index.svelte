@@ -18,7 +18,7 @@
 	let storeResults = false
 </script>
 
-<Fork href="http://github.com/vyskocilm/foo" />
+<Fork href="http://github.com/vyskocilm/lakatos" />
 
 <h1 class={style.h1}>Lakatoš</h1>
 
