@@ -2,7 +2,7 @@
 	import Fork from '../components/Fork.svelte'
 	import Switch from '../components/Switch.svelte'
 	import SoundClips from '../components/SoundClips.svelte'
-	import { stats } from '../stores/lakatos.js'
+	import { stats, saveResults } from '../stores/lakatos.js'
 
 	const style = {
 		mainDiv: `ml-12 mr-12`,
@@ -14,8 +14,6 @@
 	let soundEnabled = true
 	// nsfwEnabled if version with cursing shall be enabled
 	let nsfwEnabled = false
-	// store results or not
-	let storeResults = false
 </script>
 
 <Fork href="http://github.com/vyskocilm/lakatos" />
@@ -34,11 +32,14 @@
 		/>
 		<Switch
 			id="store-switch"
-			checked={storeResults}
+			checked={saveResults}
 			on:click={(e) => {
-				storeResults = e.detail.checked
+				saveResults.update((n) => {
+					n = e.detail.checked
+					return n
+				})
 			}}
-			text={!storeResults ? 'Ulož výsledky' : 'Smaž výsledky'}
+			text={!$saveResults ? 'Ulož výsledky' : 'Smaž výsledky'}
 		/>
 		<div>
 			| <a href="https://milujipraci.cz">milujipraci.cz</a>

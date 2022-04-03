@@ -1,4 +1,5 @@
 import { readable, writable } from 'svelte/store';
+import { browser } from '$app/env';
 import { assets } from '$app/paths';
 
 	const lakatosAll = [
@@ -151,7 +152,67 @@ src:`${assets}/zasrane-zamrdane.mp3`,
         },
 	]
 
+// all clips
 export const clips = readable(lakatosAll)
 
+// save results
+const saveResultsKey = "_saveResults"
+const savedStatsKey = "_savedStats"
+//  const initialValue = browser ? window.localStorage.getItem('theme') ?? defaultValue : defaultValue;
+export const saveResults = writable(browser ? (window.localStorage.getItem(saveResultsKey) != null ? true: false): false)
+
+saveResults.subscribe((value) => {
+    if (browser) {
+    console.log("saveResults.subscribe: value", value)
+    if (value == true) {
+        window.localStorage.setItem(saveResultsKey, "true")
+        return
+    }
+    window.localStorage.removeItem(saveResultsKey)
+    window.localStorage.removeItem(savedStatsKey)
+    }
+})
+
 // stats
-export const stats = writable(Object.fromEntries(lakatosAll.map((x, idx) => [idx, 0])))
+
+function loadStats() {
+
+    const makeDefaults = () => { return writable(Object.fromEntries(lakatosAll.map((x, idx) => [idx, 0])))}
+
+    if (!browser) {
+        return makeDefaults()
+    }
+
+    if (window.localStorage.getItem(saveResultsKey) != "true") {
+        return makeDefaults()
+    }
+    const jsn = window.localStorage.getItem(savedStatsKey)
+    if (jsn == null) {
+        return makeDefaults()
+    }
+    try {
+        const stats = JSON.parse(jsn)
+        console.log(stats)
+        return writable(Object.fromEntries(lakatosAll.map((x, idx) => [idx, stats[idx] ?? 0])))
+    } catch {
+        return makeDefaults()
+    }
+}
+
+export const stats = loadStats()
+
+stats.subscribe((value) => {
+    if (!browser) {
+        return
+    }
+    if (window.localStorage.getItem(saveResultsKey) != "true") {
+        return
+    }
+    try {
+        const jsn = JSON.stringify(value)
+        window.localStorage.setItem(savedStatsKey, jsn)
+    }
+    catch (err) {
+        console.error(err)
+    }
+})
