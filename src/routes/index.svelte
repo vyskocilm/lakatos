@@ -1,7 +1,6 @@
 <script>
 	import Switch from '../components/Switch.svelte'
 	import SoundClips from '../components/SoundClips.svelte'
-	import Graph from '../components/Graph.svelte'
 	import { stats } from '../stores/lakatos.js'
 
 	const style = {
@@ -25,23 +24,16 @@
 		}}
 		text={nsfwEnabled ? 'SFW' : 'NSFW'}
 	/>
-	<div class="flex justify-evenly space-x-2">
-		<div class="flex-grow h-12 ">
-			<SoundClips
-				{soundEnabled}
-				{nsfwEnabled}
-				on:play={(e) => {
-					soundEnabled = false
-					const idx = e.detail.idx
-					stats.update((n) => n.set(idx, n.get(idx) + 1))
-				}}
-				on:ended={() => {
-					soundEnabled = true
-				}}
-			/>
-		</div>
-		<div class="rounded flex-grow-1 h-12">
-			<Graph {nsfwEnabled} />
-		</div>
-	</div>
+	<SoundClips
+		{soundEnabled}
+		{nsfwEnabled}
+		on:play={(e) => {
+			soundEnabled = false
+			const idx = e.detail.idx
+			stats.update((n) => n.set(idx, n.get(idx) + 1))
+		}}
+		on:ended={() => {
+			soundEnabled = true
+		}}
+	/>
 </div>
