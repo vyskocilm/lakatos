@@ -43,6 +43,7 @@
 
 {#each $clips as clip, idx}
 	<audio
+		sveltekit:prefetch
 		preload="auto"
 		id="`audio-{idx}`"
 		bind:this={audios[idx]}
