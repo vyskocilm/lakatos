@@ -21,7 +21,7 @@
 <h1 class={style.h1}>Lakatoš</h1>
 
 <div class={style.mainDiv}>
-	<div class="grid grid-cols-6">
+	<div class="grid grid-cols-6 text-sm">
 		<Switch
 			disabled={!soundEnabled}
 			on:click={(e) => {
@@ -29,7 +29,7 @@
 			}}
 			text={nsfwEnabled ? 'SFW' : 'NSFW'}
 		/>
-		<div>| Inspirace: <a href="https://milujipraci.cz">milujipraci.cz</a></div>
+		<div>| <a href="https://milujipraci.cz">milujipraci.cz</a></div>
 		<div>| <a href="https://www.youtube.com/watch?v=SiUz_akTmcY">youtube</a></div>
 		<div>| <a href="https://kit.svetle.dev">kit.svelte.dev</a></div>
 		<div>| <a href="https://tailwindcss.com">tailwindcss.com</a></div>
