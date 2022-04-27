@@ -27,10 +27,6 @@ https://raw.githubusercontent.com/jms1989/github-fork-ribbon-css/gh-pages/gh-for
 		text-indent: -999999px;
 	}
 
-	.github-fork-ribbon.fixed {
-		position: fixed;
-	}
-
 	.github-fork-ribbon:before,
 	.github-fork-ribbon:after {
 		/* The right and left classes determine the side we attach our banner to */
@@ -106,44 +102,5 @@ https://raw.githubusercontent.com/jms1989/github-fork-ribbon-css/gh-pages/gh-for
 		border-style: dotted;
 		border-color: #fff;
 		border-color: rgba(255, 255, 255, 0.7);
-	}
-
-	.github-fork-ribbon.left-top,
-	.github-fork-ribbon.left-bottom {
-		right: auto;
-		left: 0;
-	}
-
-	.github-fork-ribbon.left-bottom,
-	.github-fork-ribbon.right-bottom {
-		top: auto;
-		bottom: 0;
-	}
-
-	.github-fork-ribbon.left-top:before,
-	.github-fork-ribbon.left-top:after,
-	.github-fork-ribbon.left-bottom:before,
-	.github-fork-ribbon.left-bottom:after {
-		right: auto;
-		left: -3.23em;
-	}
-
-	.github-fork-ribbon.left-bottom:before,
-	.github-fork-ribbon.left-bottom:after,
-	.github-fork-ribbon.right-bottom:before,
-	.github-fork-ribbon.right-bottom:after {
-		top: auto;
-		bottom: 3.23em;
-	}
-
-	.github-fork-ribbon.left-top:before,
-	.github-fork-ribbon.left-top:after,
-	.github-fork-ribbon.right-bottom:before,
-	.github-fork-ribbon.right-bottom:after {
-		-webkit-transform: rotate(-45deg);
-		-moz-transform: rotate(-45deg);
-		-ms-transform: rotate(-45deg);
-		-o-transform: rotate(-45deg);
-		transform: rotate(-45deg);
 	}
 </style>
