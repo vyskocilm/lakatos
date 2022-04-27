@@ -19,7 +19,7 @@
 	}
 
 	const style = {
-		grid: `py-4 grid gap-4 md:grid-cols-2 grid-cols-1 lg:grid-cols-3`,
+		grid: `py-4 grid gap-4 md:grid-cols-2 grid-cols-1 lg:grid-cols-3 xl:grid-cols-4`,
 		btn: `p-6 shrink text-xl text-white font-bold flex items-center text-center bg-blue-500 rounded hover:bg-blue-700 font-bold disabled:opacity-50 disabled:cursor-not-allowed disabled:bg-blue-400`,
 		title: `text-left justify-start w-5/6`,
 		separator: `text-center text-5xl text-bold`,

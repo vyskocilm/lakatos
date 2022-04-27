@@ -17,6 +17,8 @@
 
 	const style = {
 		switch: `toggle-bg bg-gray-200 border-2 border-gray-200 h-6 w-11 rounded-full`,
+		switchText: `ml-3 text-gray-900 text-sm font-medium`,
+		switchLabel: `flex items-center cursor-pointer relative mb-4`,
 	}
 
 	$: {
@@ -26,14 +28,10 @@
 	}
 </script>
 
-<label
-	for="nsfw-switch1"
-	class="flex items-center cursor-pointer relative mb-4"
-	bind:this={elSwitch}
->
+<label for="nsfw-switch1" class={style.switchLabel} bind:this={elSwitch}>
 	<input type="checkbox" id="nsfw-switch1" class="sr-only" {checked} {disabled} on:click={toggle} />
 	<div class={style.switch} />
-	<span class="ml-3 text-gray-900 text-sm font-medium">{text}</span>
+	<span class={style.switchText}>{text}</span>
 </label>
 
 <style>

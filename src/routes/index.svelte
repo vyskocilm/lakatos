@@ -1,9 +1,11 @@
 <script>
+	import Fork from '../components/Fork.svelte'
 	import Switch from '../components/Switch.svelte'
 	import SoundClips from '../components/SoundClips.svelte'
 	import { stats } from '../stores/lakatos.js'
 
 	const style = {
+		mainDiv: `ml-12 mr-12`,
 		h1: `text-5xl text-center my-8 uppercase`,
 	}
 
@@ -14,16 +16,24 @@
 	let nsfwEnabled = false
 </script>
 
-<h1 class={style.h1}>Svelte Kit Lakatos</h1>
+<Fork href="http://github.com/vyskocilm/foo" />
 
-<div class="ml-12 mr-12">
-	<Switch
-		disabled={!soundEnabled}
-		on:click={(e) => {
-			nsfwEnabled = e.detail.checked
-		}}
-		text={nsfwEnabled ? 'SFW' : 'NSFW'}
-	/>
+<h1 class={style.h1}>Lakatoš</h1>
+
+<div class={style.mainDiv}>
+	<div class="grid grid-cols-5">
+		<Switch
+			disabled={!soundEnabled}
+			on:click={(e) => {
+				nsfwEnabled = e.detail.checked
+			}}
+			text={nsfwEnabled ? 'SFW' : 'NSFW'}
+		/>
+		<div>| Inspirace: <a href="https://milujipraci.cz">milujipraci.cz</a></div>
+		<div>| <a href="https://www.youtube.com/watch?v=SiUz_akTmcY">youtube</a></div>
+		<div>| <a href="https://kit.svetle.dev">kit.svelte.dev</a></div>
+		<div>| <a href="https://tailwindcss.com">tailwindcss.com</a></div>
+	</div>
 	<SoundClips
 		{soundEnabled}
 		{nsfwEnabled}
@@ -37,3 +47,12 @@
 		}}
 	/>
 </div>
+
+<style>
+	a {
+		@apply underline text-blue-600;
+	}
+	a:hover {
+		@apply text-rose-900;
+	}
+</style>
