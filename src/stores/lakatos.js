@@ -163,7 +163,6 @@ export const saveResults = writable(browser ? (window.localStorage.getItem(saveR
 
 saveResults.subscribe((value) => {
     if (browser) {
-    console.log("saveResults.subscribe: value", value)
     if (value == true) {
         window.localStorage.setItem(saveResultsKey, "true")
         return
@@ -192,9 +191,8 @@ function loadStats() {
     }
     try {
         const stats = JSON.parse(jsn)
-        console.log(stats)
         return writable(Object.fromEntries(lakatosAll.map((x, idx) => [idx, stats[idx] ?? 0])))
-    } catch {
+    } catch (e) {
         return makeDefaults()
     }
 }

@@ -1,3 +1,10 @@
+<script context="module">
+	// TODO: does not solve the loading problem fully
+	// alternative would be to fetch list of clips via onMount like
+	// https://svelte.dev/tutorial/onmount
+	export const prerender = false
+</script>
+
 <script>
 	import Fork from '../components/Fork.svelte'
 	import Switch from '../components/Switch.svelte'
