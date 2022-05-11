@@ -158,7 +158,6 @@ export const clips = readable(lakatosAll)
 // save results
 const saveResultsKey = "_saveResults"
 const savedStatsKey = "_savedStats"
-//  const initialValue = browser ? window.localStorage.getItem('theme') ?? defaultValue : defaultValue;
 export const saveResults = writable(browser ? (window.localStorage.getItem(saveResultsKey) != null ? true: false): false)
 
 saveResults.subscribe((value) => {
@@ -176,10 +175,11 @@ saveResults.subscribe((value) => {
 
 function loadStats() {
 
+    const makeEmpty = () => { return writable(Object())}
     const makeDefaults = () => { return writable(Object.fromEntries(lakatosAll.map((x, idx) => [idx, 0])))}
 
     if (!browser) {
-        return makeDefaults()
+        return makeEmpty()
     }
 
     if (window.localStorage.getItem(saveResultsKey) != "true") {

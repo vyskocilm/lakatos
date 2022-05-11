@@ -39,7 +39,7 @@
 		/>
 		<Switch
 			id="store-switch"
-			checked={saveResults}
+			checked={$saveResults}
 			on:click={(e) => {
 				saveResults.update((n) => {
 					n = e.detail.checked

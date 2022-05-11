@@ -56,29 +56,33 @@
 	</audio>
 {/each}
 
-<div class={style.grid}>
-	{#each $clips as clip, idx}
-		{#if nsfwEnabled && !clip.sfw}
-			<button class={style.btn} on:click={() => play({ idx })} disabled={!soundEnabled}>
-				<div class={style.title}>
-					{clip.title}
-				</div>
-				<div class={style.separator}>‣&nbsp;</div>
-				<div class={style.score} bind:this={scoreDiv[idx]}>
-					{$stats[idx]}
-				</div>
-			</button>
-		{/if}
-		{#if !nsfwEnabled && clip.sfw}
-			<button class={style.btn} on:click={() => play({ idx })} disabled={!soundEnabled}>
-				<div class={style.title}>
-					{clip.title}
-				</div>
-				<div class={style.separator}>‣&nbsp;</div>
-				<div class={style.score} bind:this={scoreDiv[idx]}>
-					{$stats[idx]}
-				</div>
-			</button>
-		{/if}
-	{/each}
-</div>
+{#if Object.keys($stats).length > 0}
+	<div class={style.grid}>
+		{#each $clips as clip, idx}
+			{#if nsfwEnabled && !clip.sfw}
+				<button class={style.btn} on:click={() => play({ idx })} disabled={!soundEnabled}>
+					<div class={style.title}>
+						{clip.title}
+					</div>
+					<div class={style.separator}>‣&nbsp;</div>
+					<div class={style.score} bind:this={scoreDiv[idx]}>
+						{$stats[idx]}
+					</div>
+				</button>
+			{/if}
+			{#if !nsfwEnabled && clip.sfw}
+				<button class={style.btn} on:click={() => play({ idx })} disabled={!soundEnabled}>
+					<div class={style.title}>
+						{clip.title}
+					</div>
+					<div class={style.separator}>‣&nbsp;</div>
+					<div class={style.score} bind:this={scoreDiv[idx]}>
+						{$stats[idx]}
+					</div>
+				</button>
+			{/if}
+		{/each}
+	</div>
+{:else}
+	<p>Nahrávám...</p>
+{/if}
